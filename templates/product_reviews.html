@@ -1,0 +1,26 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Отзывы о {{ product['name'] }}</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+</head>  
+<body>  
+    <h1>{{ product['name'] }}</h1>  
+    <p>{{ product['description'] }}</p>  
+    <p>Цена: {{ product['price'] }}$</p>  
+
+    <h2>Отзывы:</h2>  
+    <ul>  
+        {% for review in reviews %}  
+            <li>  
+                <strong>Рейтинг:</strong> {{ review['rating'] }}<br>  
+                <strong>Комментарий:</strong> {{ review['comment'] }}<br>  
+                <strong>Дата:</strong> {{ review['created_at'] }}  
+            </li>  
+        {% endfor %}  
+    </ul>  
+
+    <a href="{{ url_for('index') }}">Назад к продуктам</a>  
+</body>  
+</html>

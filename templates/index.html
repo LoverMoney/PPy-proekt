@@ -1,0 +1,48 @@
+<!DOCTYPE html>  
+<html lang="ru">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Простой сайт на Flask</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+</head>  
+<body>  
+    <div class="container">  
+        <h1 class="mt-5">Пользователи</h1>  
+        <a href="{{ url_for('add_user') }}" class="btn btn-primary">Добавить пользователя</a>  
+        <table class="table">  
+            <thead>  
+                <tr>  
+                    <th>Имя</th>  
+                    <th>Email</th>  
+                    <th>Адрес</th>  
+                    <th>Дата создания</th>  
+                </tr>  
+            </thead>  
+            <tbody>  
+                {% for user in users %}  
+                <tr>  
+                    <td>{{ user['name'] }}</td>  
+                    <td>{{ user['email'] }}</td>  
+                    <td>{{ user['address'] }}</td>  
+                    <td>{{ user['created_at'] }}</td>  
+                </tr>  
+                {% endfor %}  
+            </tbody>  
+        </table>  
+
+        <h1>Продукты</h1>  
+        <ul>  
+            {% for product in products %}  
+                <li>  
+                    <a href="{{ url_for('product_reviews', product_id=product['id']) }}">{{ product['name'] }}</a>  
+                    - {{ product['description'] }} - {{ product['price'] }}$  
+                </li>  
+            {% endfor %}  
+        </ul>   
+
+        <h1 class="mt-5">Заказы</h1>  
+        <a href="{{ url_for('orders') }}" class="btn btn-primary">Посмотреть заказы</a>  
+    </div>  
+</body>  
+</html>
